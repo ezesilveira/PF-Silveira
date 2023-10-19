@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule as FormsPageModule } from './pages/forms/forms.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { UsersModule } from './pages/users/users.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsPageModule, 
     MatToolbarModule,
     MatIconModule,
+    UsersModule,
   ],
   exports: [DashboardComponent],
 })
