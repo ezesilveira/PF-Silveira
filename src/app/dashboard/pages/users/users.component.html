@@ -1,1 +1,6 @@
-<p>users works!</p>
+<button (click)="openUsersDialog()" mat-flat-button color="primary">
+    Crear Usuario
+    <mat-icon>add</mat-icon>
+</button>
+
+<app-users-table [dataSource]="users"></app-users-table>
