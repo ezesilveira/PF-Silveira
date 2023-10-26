@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CoursesDialogComponent } from './components/courses-dialog/courses-dialog.component';
-import { Courses } from './models';
+import { Course } from './models';
 
 @Component({
   selector: 'app-courses',
@@ -13,7 +13,7 @@ export class CoursesComponent {
 courseName = '';
 
 
-courses: Courses[] = [
+courses: Course[] = [
   {
     id: 1,
     name: 'Introducción STAR WARS',
@@ -43,9 +43,38 @@ courses: Courses[] = [
       next: (v) => {
         console.log('Valor: ', v);
         if (!!v) {
-          this.courseName = v;
+          this.courses = [
+            ...this.courses,
+            {
+              ...v,
+            id: new Date().getTime(),
+            }
+          ]
         }
       },
     });
   }
+  OnEditCourse(course: Course): void {
+    this.matDialog.open(CoursesDialogComponent, {
+      data: course
+    }).afterClosed().subscribe({
+      next: (v) => {
+        if (!!v) {
+
+          const arrayNuevo = [...this.courses];
+          const indiceToEdit = arrayNuevo.findIndex((u) => u.id === course.id);
+          arrayNuevo[indiceToEdit] = {...arrayNuevo[indiceToEdit], ...v}  
+
+          this.courses = [...arrayNuevo]
+        }
+      }
+    });
+  }
+
+
+  onDeleteCourse(courseId: number): void {
+    if (confirm('Esta seguro de borrar este curso?')) {
+    this.courses = this.courses.filter((u) => u.id !== courseId)
+  }
+}
 }

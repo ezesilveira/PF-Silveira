@@ -4,4 +4,8 @@
     <mat-icon>add</mat-icon>
 </button>
 
-<app-courses-table [coursesDataSource]="courses"></app-courses-table>
+<app-courses-table
+    [coursesDataSource]="courses"
+    (editCourse)="OnEditCourse($event)"
+    (deleteCourse)="onDeleteCourse($event)"
+    ></app-courses-table>

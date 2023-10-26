@@ -3,4 +3,8 @@
     <mat-icon>add</mat-icon>
 </button>
 
-<app-users-table [dataSource]="users"></app-users-table>
+<app-users-table 
+[dataSource]="users"
+(editUser)="OnEditUser($event)"
+(deleteUser)="onDeleteUser($event)"
+></app-users-table>
