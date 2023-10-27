@@ -9,10 +9,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { UsersModule } from './pages/users/users.module';
 import { CoursesModule } from './pages/courses/courses.module';
+import { FontSizeDirective } from '../font-size.directive';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,FontSizeDirective
+
   ],
   imports: [
     CommonModule, 
