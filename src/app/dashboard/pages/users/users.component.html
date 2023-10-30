@@ -4,7 +4,9 @@
 </button>
 
 <app-users-table 
-[dataSource]="users"
-(editUser)="OnEditUser($event)"
-(deleteUser)="onDeleteUser($event)"
+[dataSource]="(users | async) || []"
 ></app-users-table>
+
+<!-- (editUser)="OnEditUser($event)"
+(deleteUser)="onDeleteUser($event)" 
+-->

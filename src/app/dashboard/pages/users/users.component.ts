@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
 import { UsersDialogComponent } from './components/users-dialog/users-dialog.component';
 import { User } from './models';
-
+import { UsersService } from './users.service'; 
+import { NotifierService } from '../../../core/services/notifier.service';
+import { Observable, filter, map, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -11,53 +13,43 @@ import { User } from './models';
 })
 export class UsersComponent {
 userName = '';
-
-
-users: User[] = [
-  {
-    id: 1,
-    name: 'Luke',
-    lastName: 'Skywalker',
-    email: 'luke@example.com',
-  },
-  {
-    id: 2,
-    name: 'Leia',
-    lastName: 'Organa',
-    email: 'leia@example.com',
-  },
-  {
-    id: 3,
-    name: 'Obi-Wan',
-    lastName: 'Kenobi',
-    email: 'obi-wan@example.com',
-  }
-]
+users: Observable<User[]>;
 
   constructor(
-    private matDialog : MatDialog
+    private matDialog : MatDialog,
+    private UsersService : UsersService,
+    private NotifierService : NotifierService
   ){
-
+    this.users = this.UsersService.getUsers();
+    this.UsersService.loadUsers();
+    //this.UsersService.getUsers().subscribe({
+    //  next: (v) => {
+    //    this.users = v
+    //    /* this.UsersService.sendNotification('Se Cargaron los usuarios'); */
+    //    this.NotifierService.showSuccess('Exito', 'Se Cargaron los usuarios')
+    //  }
+    //});
   }
-  openUsersDialog (): void {
+openUsersDialog (): void {
     this.matDialog.open(UsersDialogComponent)
     .afterClosed()
     .subscribe({
       next: (v) => {
-        console.log('Valor: ', v);
         if (!!v) {
-            this.users = [
+            /* this.users = [
               ...this.users,
               {
                 ...v,
               id: new Date().getTime(),
-              }
-            ]
+              } 
+            ]*/
         }
       },
     });
   }
-  OnEditUser(user: User): void {
+
+
+/* OnEditUser(user: User): void {
     this.matDialog.open(UsersDialogComponent, {
       data: user,
     }).afterClosed().subscribe({
@@ -77,6 +69,6 @@ users: User[] = [
   onDeleteUser(userId: number): void {
     if (confirm('Esta seguro de borrar este usuario')) {
     this.users = this.users.filter((u) => u.id !== userId)
-  }
-}
+  }  
+} */
 }
