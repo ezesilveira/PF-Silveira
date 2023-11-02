@@ -7,11 +7,38 @@
         mode="side"
         position="start">
 
-        <p>Auto-resizing sidenav</p>
-      <p *ngIf="showFiller" appFontSize>Lorem, ipsum dolor sit amet consectetur.</p>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
+        <mat-nav-list>
+            <mat-list-item routerLink="home">
+                <a>Home</a>
+            </mat-list-item>
+            <mat-list-item routerLink="users" [activated]="true">
+                <a>Usuarios</a>
+            </mat-list-item>
+            <mat-list-item routerLink="courses">
+                <a>Cursos</a>
+            </mat-list-item>
+            <mat-list-item routerLink="">
+                <a>Alumnos</a>
+            </mat-list-item>
+            <mat-list-item routerLink="">
+                <a>Inscripciones</a>
+            </mat-list-item>
+        </mat-nav-list>
+        <!--  <button (click)="showFiller = !showFiller" mat-raised-button>
+            Home
         </button>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+            Usuarios
+        </button>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+            Cursos
+        </button>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+            Alumnos
+        </button>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+            Inscripciones
+        </button> -->
     </mat-drawer>
 
     <div class="example-sidenav-content d-flex flex-column justify-content-start">
@@ -29,8 +56,9 @@
             </button>
         </mat-toolbar>
         <main style="padding: 1rem;">
-            <app-users></app-users>
-            <app-courses></app-courses>
+            <router-outlet></router-outlet>
+            <!--  <app-users></app-users>
+            <app-courses></app-courses> -->
         </main>
     </div>
 </mat-drawer-container>

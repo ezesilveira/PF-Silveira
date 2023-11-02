@@ -10,6 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { UsersModule } from './pages/users/users.module';
 import { CoursesModule } from './pages/courses/courses.module';
 import { FontSizeDirective } from '../font-size.directive';
+import { RouterModule } from '@angular/router';
+import {Component} from '@angular/core';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { FontSizeDirective } from '../font-size.directive';
     MatToolbarModule,
     MatIconModule,
     UsersModule,
-    CoursesModule
+    CoursesModule,
+    RouterModule,
+    MatListModule
   ],
   exports: [DashboardComponent],
 })
