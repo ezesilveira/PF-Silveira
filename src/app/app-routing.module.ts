@@ -9,29 +9,16 @@ import { UserDetailComponent } from './dashboard/pages/users/components/user-det
 
 const routes: Routes = [
   {
-    path: 'dashboard', component: DashboardComponent,
-    children: [
-      {
-        path: 'home', component: HomeComponent
-      },
-      {
-        path: 'users', component: UsersComponent,
-      },
-      {
-        path: 'users/detail/:id',
-        component: UserDetailComponent,
-      },
-      {
-        path: 'courses', component: CoursesComponent
-      },
-      {
-        path: '**', redirectTo: 'home',
-      }
-    ]
-  },
+    path: 'dashboard',
+    loadChildren: () => 
+      import('./dashboard/dashboard.module').then((r) => r.DashboardModule),      
+  }, 
   {
     path: 'auth', component: AuthComponent
-  }
+  },
+  {
+    path: '**', redirectTo: 'auth'
+  },
 ];
 
 @NgModule({

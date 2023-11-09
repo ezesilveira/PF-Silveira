@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CoursesDialogComponent } from './components/courses-dialog/courses-dialog.component';
 import { Course } from './models';
+import { CoursesService } from './courses.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-courses',
@@ -9,72 +11,64 @@ import { Course } from './models';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent {
-  
-courseName = '';
 
-
-courses: Course[] = [
-  {
-    id: 1,
-    name: 'Introducción STAR WARS',
-    duration: '3 Meses'
-  },
-  {
-    id: 2,
-    name: 'El Universo Expandido',
-    duration: '2 Meses'
-  },
-  {
-    id: 3,
-    name: 'Peliculas y Series',
-    duration: '3 Meses',
-  }
-]
+courses$ : Observable<Course[]>;
 
   constructor(
-    private matDialog : MatDialog
+    private matDialog : MatDialog,
+    private coursesService: CoursesService
   ){
-
+this.courses$ = this.coursesService.getCourses$();
   }
-  openCoursesDialog (): void {
-    this.matDialog.open(CoursesDialogComponent)
-    .afterClosed()
-    .subscribe({
-      next: (v) => {
-        console.log('Valor: ', v);
-        if (!!v) {
-          this.courses = [
-            ...this.courses,
-            {
-              ...v,
-            id: new Date().getTime(),
-            }
-          ]
-        }
-      },
-    });
+  
+  generateAlphanumericID(length: number): string {
+    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let id = '';
+    const values = new Uint8Array(length);
+  
+    crypto.getRandomValues(values);
+  
+    for (let i = 0; i < length; i++) {
+      id += charset[values[i] % charset.length];
+    }
+  
+    return id;
   }
-  OnEditCourse(course: Course): void {
-    this.matDialog.open(CoursesDialogComponent, {
-      data: course
-    }).afterClosed().subscribe({
-      next: (v) => {
-        if (!!v) {
 
-          const arrayNuevo = [...this.courses];
-          const indiceToEdit = arrayNuevo.findIndex((u) => u.id === course.id);
-          arrayNuevo[indiceToEdit] = {...arrayNuevo[indiceToEdit], ...v}  
-
-          this.courses = [...arrayNuevo]
+  addCourse (): void {
+    const idRandom = this.generateAlphanumericID(8);
+    console.log(idRandom);
+    this.matDialog.open(CoursesDialogComponent).afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+          this.courses$ = this.coursesService.createCourse$({
+            //id: idRandom,
+            id: new Date().getDate(),
+            name: result.name,
+            duration: result.duration,
+          })
         }
       }
     });
   }
 
-
-  onDeleteCourse(courseId: number): void {
-    if (confirm('Esta seguro de borrar este curso?')) {
-    this.courses = this.courses.filter((u) => u.id !== courseId)
+  onDeleteCourse (courseId: number): void {
+    this.courses$ = this.coursesService.deleteCourse$(courseId)
   }
-}
+
+  OnEditCourse (courseId: number): void {
+    this.matDialog
+    .open(CoursesDialogComponent, {
+      data: courseId,
+    })
+    .afterClosed()
+    .subscribe({
+      next: (result) => {
+        if (!!result) {
+          this.courses$ = this.coursesService.editCourse$(courseId, result);
+        }
+      }
+    });
+  }
+
 }

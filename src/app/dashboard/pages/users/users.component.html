@@ -1,12 +1,13 @@
-<button (click)="openUsersDialog()" mat-flat-button color="primary">
+<button mat-flat-button color="primary">
     Crear Usuario
     <mat-icon>add</mat-icon>
 </button>
 
 <app-users-table 
-[dataSource]="(users | async) || []"
+[dataSource]="(users$ | async) || []"
 ></app-users-table>
 
 <!-- (editUser)="OnEditUser($event)"
-(deleteUser)="onDeleteUser($event)" 
+(deleteUser)="onDeleteUser($event)"
+(click)="openUsersDialog()"
 -->

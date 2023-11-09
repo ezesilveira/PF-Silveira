@@ -13,24 +13,18 @@ import { Observable, filter, map, of, switchMap } from 'rxjs';
 })
 export class UsersComponent {
 userName = '';
-users: Observable<User[]>;
+users$: Observable<User[]>;
 
   constructor(
     private matDialog : MatDialog,
     private UsersService : UsersService,
     private NotifierService : NotifierService
   ){
-    this.users = this.UsersService.getUsers();
+    this.users$ = this.UsersService.getUsers();
     this.UsersService.loadUsers();
-    //this.UsersService.getUsers().subscribe({
-    //  next: (v) => {
-    //    this.users = v
-    //    /* this.UsersService.sendNotification('Se Cargaron los usuarios'); */
-    //    this.NotifierService.showSuccess('Exito', 'Se Cargaron los usuarios')
-    //  }
-    //});
+    /* this.NotifierService.showSuccess('Exito', 'Se Cargaron los usuarios') */
   }
-openUsersDialog (): void {
+/* openUsersDialog (): void {
     this.matDialog.open(UsersDialogComponent)
     .afterClosed()
     .subscribe({
@@ -42,11 +36,11 @@ openUsersDialog (): void {
                 ...v,
               id: new Date().getTime(),
               } 
-            ]*/
+            ]
         }
       },
     });
-  }
+  } */
 
 
 /* OnEditUser(user: User): void {

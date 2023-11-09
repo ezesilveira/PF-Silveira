@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FullnamePipe } from './pipes/fullname.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { FormErrorsPipe } from './pipes/form-errors.pipe';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { FormErrorsPipe } from './pipes/form-errors.pipe';
     MatDialogModule,
     FullnamePipe,
     MatTableModule,
-    FormErrorsPipe
+    FormErrorsPipe,
+    MatProgressBarModule
+
   ]
 })
 export class SharedModule { }

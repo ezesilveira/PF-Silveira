@@ -8,37 +8,22 @@
         position="start">
 
         <mat-nav-list>
-            <mat-list-item routerLink="home">
+            <mat-list-item routerLink="home" (click)="drawer.toggle()">
                 <a>Home</a>
             </mat-list-item>
-            <mat-list-item routerLink="users" [activated]="true">
+            <mat-list-item routerLink="users" [activated]="true" (click)="drawer.toggle()">
                 <a>Usuarios</a>
             </mat-list-item>
-            <mat-list-item routerLink="courses">
+            <mat-list-item routerLink="courses" (click)="drawer.toggle()">
                 <a>Cursos</a>
             </mat-list-item>
-            <mat-list-item routerLink="">
+            <mat-list-item routerLink="" (click)="drawer.toggle()">
                 <a>Alumnos</a>
             </mat-list-item>
-            <mat-list-item routerLink="">
+            <mat-list-item routerLink="" (click)="drawer.toggle()">
                 <a>Inscripciones</a>
             </mat-list-item>
         </mat-nav-list>
-        <!--  <button (click)="showFiller = !showFiller" mat-raised-button>
-            Home
-        </button>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-            Usuarios
-        </button>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-            Cursos
-        </button>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-            Alumnos
-        </button>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-            Inscripciones
-        </button> -->
     </mat-drawer>
 
     <div class="example-sidenav-content d-flex flex-column justify-content-start">
@@ -57,8 +42,6 @@
         </mat-toolbar>
         <main style="padding: 1rem;">
             <router-outlet></router-outlet>
-            <!--  <app-users></app-users>
-            <app-courses></app-courses> -->
         </main>
     </div>
 </mat-drawer-container>

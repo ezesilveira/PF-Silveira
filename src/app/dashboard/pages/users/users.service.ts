@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './models';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -46,9 +46,15 @@ export class UsersService {
       this.users$.next(this.users);
     }
 
-    getUsers(): BehaviorSubject<User[]> {
+    /* getUsers(): BehaviorSubject<User[]> {
       return this.users$
+    } */
+    getUsers (): Observable<User[]> {
+      return new Observable((subscriber) => {
+        subscriber.next(this.users);
+      })
     }
+  
 
     addUser(newUser: User): void {
       // Agregar el nuevo usuario a la lista actual de usuarios

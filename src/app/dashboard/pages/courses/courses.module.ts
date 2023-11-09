@@ -6,7 +6,6 @@ import { CoursesTableComponent } from './components/courses-table/courses-table.
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
-
 @NgModule({
   declarations: [
     CoursesDialogComponent,

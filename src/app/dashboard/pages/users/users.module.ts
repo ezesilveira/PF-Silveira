@@ -5,6 +5,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { UsersDialogComponent } from './components/users-dialog/users-dialog.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 /* import { UsersService } from './users.service'; */
 
 @NgModule({
@@ -12,16 +14,18 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     UsersComponent,
     UsersDialogComponent,
     UsersTableComponent,
-    UserDetailComponent
+    UserDetailComponent,
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    MatCardModule,
+    MatButtonModule
   ],
   exports: [
     UsersComponent
   ],
- /*  providers: [
+  /*  providers: [
     UsersService,
   ] */
 })

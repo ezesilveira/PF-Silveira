@@ -1,11 +1,11 @@
 <br>
-<button (click)="openCoursesDialog()" mat-flat-button color="primary">
+<button (click)="addCourse()" mat-flat-button color="primary">
     Crear Curso
     <mat-icon>add</mat-icon>
 </button>
 
 <app-courses-table
-    [coursesDataSource]="courses"
+    [coursesDataSource]="(courses$ | async) || []"
     (editCourse)="OnEditCourse($event)"
     (deleteCourse)="onDeleteCourse($event)"
-    ></app-courses-table>
+></app-courses-table>
