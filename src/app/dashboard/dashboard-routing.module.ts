@@ -22,13 +22,18 @@ import { DashboardComponent } from './dashboard.component';
                 loadChildren: () => import('./pages/courses/courses.module')
                     .then((m) => m.CoursesModule)
                 },
-                { // /dashboard/users
+                {
+                path: 'users',
+                loadChildren: () => import('./pages/users/users.module')
+                    .then((m) => m.UsersModule)
+                },
+                /* { // /dashboard/users
                 path: 'users', component: UsersComponent,
                 },
                 {
                 path: 'users/detail/:id',
                 component: UserDetailComponent,
-                },
+                }, */
                 /* {
                 path: 'courses', component: CoursesComponent
                 },

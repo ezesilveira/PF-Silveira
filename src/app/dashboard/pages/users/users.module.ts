@@ -7,6 +7,7 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { UsersRoutingModule } from './users-routing.module';
 /* import { UsersService } from './users.service'; */
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     SharedModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    UsersRoutingModule
   ],
   exports: [
     UsersComponent
