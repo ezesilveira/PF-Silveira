@@ -17,6 +17,11 @@ import { DashboardComponent } from './dashboard.component';
                 { // /dashboard/home
                 path: 'home', component: HomeComponent
                 },
+                {
+                path: 'courses',
+                loadChildren: () => import('./pages/courses/courses.module')
+                    .then((m) => m.CoursesModule)
+                },
                 { // /dashboard/users
                 path: 'users', component: UsersComponent,
                 },
@@ -24,12 +29,12 @@ import { DashboardComponent } from './dashboard.component';
                 path: 'users/detail/:id',
                 component: UserDetailComponent,
                 },
-                {
+                /* {
                 path: 'courses', component: CoursesComponent
                 },
                 {
                 path: 'courses/:id', component: CourseDetailComponent
-                },
+                }, */
                 {
                 path: '**', redirectTo: 'home',
                 },
