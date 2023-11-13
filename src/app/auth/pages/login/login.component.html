@@ -1,4 +1,41 @@
-<p>login works!</p>
-<button (click)="login()" color="primary">
-    Iniciar Sesión
-</button>
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="loginForm"> <!--  (ngSubmit)="onSubmit()" -->
+        <h2>Iniciar Sesión</h2>
+        <!-- <mat-error> --> <!--  *ngIf="loginInvalid" -->
+            <!-- The username and password were not recognised -->
+        <!-- </mat-error> -->
+        <mat-form-field class="full-width-input">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" required>
+            <mat-error>
+                Ingrese un email valido
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error>
+                Ingrese un password valido
+            </mat-error>
+        </mat-form-field>
+        <button (click)="login()" mat-raised-button color="primary">Iniciar</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<!-- <h1>Iniciar Sesión</h1>
+<form>
+    <div>
+        <mat-form-field class="w-100" color="primary">
+            <mat-label>Email</mat-label>
+            <input mat-input type="email">
+        </mat-form-field>
+        <mat-form-field class="w-100" color="primary">
+            <mat-label>Password</mat-label>
+            <input mat-input type="password">
+        </mat-form-field>
+    </div>
+    <button (click)="login()" mat-flat-button color="primary">
+        Iniciar Sesión
+    </button>
+</form> -->

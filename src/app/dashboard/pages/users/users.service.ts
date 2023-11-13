@@ -14,7 +14,7 @@ export class UsersService {
   }
 
   private users : User[] = [
-    {
+/*     {
       id: 1,
       name: 'Luke',
       lastName: 'Skywalker',
@@ -31,7 +31,7 @@ export class UsersService {
       name: 'Obi-Wan',
       lastName: 'Kenobi',
       email: 'obi-wan@example.com',
-    }
+    } */
   ];
 
     private sendNotification$ = new Subject<string>();

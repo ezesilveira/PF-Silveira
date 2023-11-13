@@ -1,0 +1,48 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "admin",
+            "lastName": "admin",
+            "email": "admin@example.com",
+            "password": "123456",
+            "token": "ahkJHd324JkJh3",
+            "role": "ADMIN"
+        },
+        {
+            "id": 2,
+            "name": "Luke",
+            "lastName": "Skywalker",
+            "email": "luke@example.com" 
+        },
+        {
+            "id": 3,
+            "name": "Leia",
+            "lastName": "Organa",
+            "email": "leia@example.com"
+        },
+        {
+            "id": 4,
+            "name": "Obi-Wan",
+            "lastName": "Kenobi",
+            "email": "obi-wan@example.com"
+        }
+    ],
+    "courses": [
+        {
+            "id": 1,
+            "name": "Introducción STAR WARS",
+            "duration": "3 Meses"
+        },
+        {
+            "id": 2,
+            "name": "El Universo Expandido",
+            "duration": "2 Meses"
+        },
+        {
+            "id": 3,
+            "name": "Peliculas y Series",
+            "duration": "3 Meses"
+        }
+    ]
+}

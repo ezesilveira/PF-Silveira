@@ -1,4 +1,3 @@
-
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer 
         style="width: 200px" 
@@ -11,7 +10,7 @@
             <mat-list-item routerLink="home" (click)="drawer.toggle()">
                 <a>Home</a>
             </mat-list-item>
-            <mat-list-item routerLink="users" [activated]="true" (click)="drawer.toggle()">
+            <mat-list-item routerLink="users" (click)="drawer.toggle()">
                 <a>Usuarios</a>
             </mat-list-item>
             <mat-list-item routerLink="courses" (click)="drawer.toggle()">
@@ -22,6 +21,9 @@
             </mat-list-item>
             <mat-list-item routerLink="" (click)="drawer.toggle()">
                 <a>Inscripciones</a>
+            </mat-list-item>
+            <mat-list-item routerLink="" (click)="logout()">
+                <a>Cerrar Sesión</a>
             </mat-list-item>
         </mat-nav-list>
     </mat-drawer>
