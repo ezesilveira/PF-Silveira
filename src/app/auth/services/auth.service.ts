@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, map } from 'rxjs';
 import { User } from 'src/app/dashboard/pages/users/models';
@@ -18,8 +18,16 @@ export class AuthService {
               private router: Router) {}
 
   login(payload: LoginPayload): void {
+    const headers = new HttpHeaders({
+      'token': localStorage.getItem('token') || 'Sin Token',
+    })
+
     this.httpClient
-    .get<User[]>(`${environment.baseUrl}/users?email=${payload.email}&password=${payload.password}`)
+    .get<User[]>(`${environment.baseUrl}/users?email=${payload.email}&password=${payload.password}`,
+      {
+        headers: headers
+      }
+    )
     .subscribe({
       next: (response) => {
         if (!response.length) {
@@ -30,6 +38,9 @@ export class AuthService {
           localStorage.setItem('token', authUser.token)
           this.router.navigate(['/dashboard/home'])
         }
+      },
+      error: (err) => {
+        alert('Error de conexión')
       }
     });
   }
