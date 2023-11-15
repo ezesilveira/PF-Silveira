@@ -43,6 +43,11 @@
             "id": 3,
             "name": "Peliculas y Series",
             "duration": "3 Meses"
+        },
+        {
+            "id": 4,
+            "name": "Planetas de Star Wars",
+            "duration": "2 Meses"
         }
     ]
 }
