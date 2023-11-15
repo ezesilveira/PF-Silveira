@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment.local';
 import { MockProvider } from 'ng-mocks';
 import { Router } from '@angular/router';
 
-fdescribe('AuthService', () => {
+describe('AuthService', () => {
     let authService: AuthService;
     let httpController: HttpTestingController;
 
