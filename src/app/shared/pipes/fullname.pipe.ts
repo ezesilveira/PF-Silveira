@@ -15,7 +15,8 @@ export class FullnamePipe implements PipeTransform {
           return result.toLowerCase();
         case 'uppercase':
           return result.toUpperCase();
-        
+        case 'lastname':
+          return `${value.name}` + ' ' + value.lastName.toUpperCase();
         default:
           return 'Invalid args';
     }

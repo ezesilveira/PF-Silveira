@@ -7,19 +7,34 @@
         position="start">
 
         <mat-nav-list>
-            <mat-list-item routerLink="home" (click)="drawer.toggle()">
+            <mat-list-item routerLink="home"
+            routerLinkActive #homeLink="routerLinkActive"
+            [activated]="homeLink.isActive"
+            (click)="drawer.toggle()">
                 <a>Home</a>
             </mat-list-item>
-            <mat-list-item routerLink="users" (click)="drawer.toggle()">
+            <mat-list-item routerLink="users" 
+            routerLinkActive #usuariosLink="routerLinkActive"
+            [activated]="usuariosLink.isActive"
+            (click)="drawer.toggle()">
                 <a>Usuarios</a>
             </mat-list-item>
-            <mat-list-item routerLink="courses" (click)="drawer.toggle()">
+            <mat-list-item routerLink="courses"
+            routerLinkActive #cursosLink="routerLinkActive"
+            [activated]="cursosLink.isActive"
+            (click)="drawer.toggle()">
                 <a>Cursos</a>
             </mat-list-item>
-            <mat-list-item routerLink="" (click)="drawer.toggle()">
+            <mat-list-item routerLink=""
+            routerLinkActive #alumnosLink="routerLinkActive"
+            [activated]="alumnosLink.isActive" 
+            (click)="drawer.toggle()">
                 <a>Alumnos</a>
             </mat-list-item>
-            <mat-list-item routerLink="" (click)="drawer.toggle()">
+            <mat-list-item routerLink=""
+            routerLinkActive #incripcionesLink="routerLinkActive"
+            [activated]="incripcionesLink.isActive"
+            (click)="drawer.toggle()">
                 <a>Inscripciones</a>
             </mat-list-item>
             <br>

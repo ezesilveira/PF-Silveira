@@ -28,7 +28,7 @@ export class UsersTableComponent implements OnInit {
   setTimeout(() => {
     this.loading = false;
     // Aquí puedes cargar la lista de usuarios desde tu servicio o fuente de datos
-  }, 1500);
+  }, 1200);
   }
 
   goToDetail(userID: number): void {
