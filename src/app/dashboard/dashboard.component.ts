@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
+import { User } from './pages/users/models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +10,14 @@ import { AuthService } from '../auth/services/auth.service';
 })
 export class DashboardComponent {
   showFiller = false;
-  constructor(private authService : AuthService) {}
+
+  public authUsers$: Observable<User | null>;
+
+  constructor(private authService : AuthService) {
+
+  this.authUsers$ = this.authService.authUser$;
+
+  }
 
   logout(): void {
     this.authService.logout();

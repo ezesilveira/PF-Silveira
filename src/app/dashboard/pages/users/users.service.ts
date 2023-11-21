@@ -1,65 +1,40 @@
 import { Injectable } from '@angular/core';
 import { User } from './models';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable, concatMap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.local';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor() { 
-    this.sendNotification$.subscribe({
-      next: (message) => alert(message),
-    });
-  }
+  constructor(private httpClient: HttpClient) { }
 
-  private users : User[] = [
-/*     {
-      id: 1,
-      name: 'Luke',
-      lastName: 'Skywalker',
-      email: 'luke@example.com', 
-    },
-    {
-      id: 2,
-      name: 'Leia',
-      lastName: 'Organa',
-      email: 'leia@example.com',
-    },
-    {
-      id: 3,
-      name: 'Obi-Wan',
-      lastName: 'Kenobi',
-      email: 'obi-wan@example.com',
-    } */
-  ];
+  private users : User[] = [];
 
-    private sendNotification$ = new Subject<string>();
-
-    private users$ = new BehaviorSubject<User[]>([]);
-
-    sendNotification(notification: string) : void {
-      this.sendNotification$.next(notification)
+    getUsers(): Observable<User[]> {
+      return this.httpClient.get<User[]>(`${environment.baseUrl}/users`);
+    }
+    
+    createUser(payload: User): Observable<User[]> {
+      return this.httpClient
+      .post<User>(`${environment.baseUrl}/users`, payload)
+      .pipe(concatMap(() => this.getUsers())
+        )
     }
 
-    loadUsers () : void {
-      this.users$.next(this.users);
+    updateUser(userId: number, payload: User): Observable<User[]> {
+      return this.httpClient
+      .put<User>(`${environment.baseUrl}/users/${userId}`, payload)
+        .pipe(concatMap(() => this.getUsers())
+        )
     }
 
-    /* getUsers(): BehaviorSubject<User[]> {
-      return this.users$
-    } */
-    getUsers (): Observable<User[]> {
-      return new Observable((subscriber) => {
-        subscriber.next(this.users);
-      })
-    }
-  
-
-    addUser(newUser: User): void {
-      // Agregar el nuevo usuario a la lista actual de usuarios
-      this.users.push(newUser);
-      // Emitir la lista actualizada a través del BehaviorSubject
-      this.users$.next(this.users);
+    deleteUser(userId: number): Observable<User[]> {
+      return this.httpClient
+      .delete<User>(`${environment.baseUrl}/users/${userId}`)
+        .pipe(concatMap(() => this.getUsers())
+        )
     }
   }

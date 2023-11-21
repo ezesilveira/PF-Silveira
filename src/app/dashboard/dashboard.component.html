@@ -22,8 +22,16 @@
             <mat-list-item routerLink="" (click)="drawer.toggle()">
                 <a>Inscripciones</a>
             </mat-list-item>
+            <br>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-list-item>
+                <mat-icon>account_circle</mat-icon>
+                <a>{{" " +(authUsers$ | async)?.name + " " + (authUsers$ | async)?.lastName}}</a>
+            </mat-list-item>
             <mat-list-item routerLink="" (click)="logout()">
-                <a>Cerrar Sesión</a>
+                <mat-icon>logout</mat-icon>
+                <a> Cerrar Sesión</a>
             </mat-list-item>
         </mat-nav-list>
     </mat-drawer>

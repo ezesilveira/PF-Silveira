@@ -21,40 +21,29 @@ users$: Observable<User[]>;
     private NotifierService : NotifierService
   ){
     this.users$ = this.UsersService.getUsers();
-    this.UsersService.loadUsers();
+    /* this.UsersService.loadUsers(); */
     /* this.NotifierService.showSuccess('Exito', 'Se Cargaron los usuarios') */
   }
-/* openUsersDialog (): void {
+  addUser (): void {
     this.matDialog.open(UsersDialogComponent)
     .afterClosed()
     .subscribe({
-      next: (v) => {
-        if (!!v) {
-            /* this.users = [
-              ...this.users,
-              {
-                ...v,
-              id: new Date().getTime(),
-              } 
-            ]
+      next: (valorFormulario) => {
+        if (!!valorFormulario) {
+          this.users$ = this.UsersService.createUser(valorFormulario);
         }
       },
     });
-  } */
+  }
 
 
-/* OnEditUser(user: User): void {
+  OnEditUser(user: User): void {
     this.matDialog.open(UsersDialogComponent, {
       data: user,
     }).afterClosed().subscribe({
-      next: (v) => {
-        if (!!v) {
-
-          const arrayNuevo = [...this.users];
-          const indiceToEdit = arrayNuevo.findIndex((u) => u.id === user.id);
-          arrayNuevo[indiceToEdit] = {...arrayNuevo[indiceToEdit], ...v}  
-
-          this.users = [...arrayNuevo]
+      next: (valorFormulario) => {
+        if (!!valorFormulario) {
+          this.users$ = this.UsersService.updateUser(user.id, valorFormulario)
         }
       }
     });
@@ -62,7 +51,7 @@ users$: Observable<User[]>;
 
   onDeleteUser(userId: number): void {
     if (confirm('Esta seguro de borrar este usuario')) {
-    this.users = this.users.filter((u) => u.id !== userId)
+      this.users$ = this.UsersService.deleteUser(userId);
   }  
-} */
+}
 }
