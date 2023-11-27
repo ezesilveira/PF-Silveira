@@ -4,7 +4,7 @@ import { UsersDialogComponent } from './components/users-dialog/users-dialog.com
 import { User } from './models';
 import { UsersService } from './users.service'; 
 import { NotifierService } from '../../../core/services/notifier.service';
-import { Observable, filter, map, of, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -35,7 +35,6 @@ users$: Observable<User[]>;
       },
     });
   }
-
 
   OnEditUser(user: User): void {
     this.matDialog.open(UsersDialogComponent, {
