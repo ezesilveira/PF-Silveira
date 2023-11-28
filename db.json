@@ -13,7 +13,10 @@
       "id": 2,
       "name": "Luke",
       "lastName": "Skywalker",
-      "email": "luke@example.com"
+      "email": "luke@example.com",
+      "password": "234567",
+      "token": "j6hF43fg32",
+      "role": "EMPLOYEE"
     },
     {
       "id": 3,
@@ -44,12 +47,6 @@
       "lastName": "Darklighter",
       "email": "biggs@example.com",
       "id": 7
-    },
-    {
-      "name": "1iiiiiiii",
-      "lastName": "1",
-      "email": "admin@example.com",
-      "id": 8
     }
   ],
   "courses": [
