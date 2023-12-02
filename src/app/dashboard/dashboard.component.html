@@ -27,13 +27,13 @@
             </mat-list-item>
             <mat-list-item routerLink=""
             routerLinkActive #alumnosLink="routerLinkActive"
-            [activated]="alumnosLink.isActive" 
+            [activated]="alumnosLink.isActive"
             (click)="drawer.toggle()">
                 <a>Alumnos</a>
             </mat-list-item>
-            <mat-list-item routerLink=""
-            routerLinkActive #incripcionesLink="routerLinkActive"
-            [activated]="incripcionesLink.isActive"
+            <mat-list-item routerLink="enrollments"
+            routerLinkActive #enrollmentsLink="routerLinkActive"
+            [activated]="enrollmentsLink.isActive"
             (click)="drawer.toggle()">
                 <a>Inscripciones</a>
             </mat-list-item>

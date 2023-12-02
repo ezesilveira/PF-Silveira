@@ -29,10 +29,12 @@ import { adminGuard } from '../core/guards/admin.guard';
                 loadChildren: () => import('./pages/users/users.module')
                     .then((m) => m.UsersModule)
                 },
-                /* { // /dashboard/users
-                path: 'users', component: UsersComponent,
+                { // /dashboard/users
+                path: 'enrollments',
+                loadChildren: () => import('./pages/enrollments/enrollments.module')
+                    .then((m) => m.EnrollmentsModule)
                 },
-                {
+                /*{
                 path: 'users/detail/:id',
                 component: UserDetailComponent,
                 }, */

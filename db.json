@@ -70,5 +70,51 @@
       "name": "Planetas de Star Wars",
       "duration": "2 Meses"
     }
+  ],
+  "enrollments": [
+    {
+      "id": 1,
+      "courseId": 1,
+      "studentId": 1
+    },
+    {
+      "id": 2,
+      "courseId": 2,
+      "studentId": 2
+    },
+    {
+      "id": 3,
+      "courseId": 3,
+      "studentId": 3
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "Santiago",
+      "lastName": "Cuneo",
+      "email": "santiago@example.com",
+      "password": "123456",
+      "token": "ghjkJHd324JkJh3",
+      "role": "STUDENT"
+    },
+    {
+      "id": 2,
+      "name": "Ezequiel",
+      "lastName": "Fernandez",
+      "email": "ezequiel@example.com",
+      "password": "123456",
+      "token": "afgtRe2324JkJh3",
+      "role": "STUDENT"
+    },
+    {
+      "id": 3,
+      "name": "Axel",
+      "lastName": "Romero",
+      "email": "axel@example.com",
+      "password": "123456",
+      "token": "ahkJHd577khF4Jh3",
+      "role": "STUDENT"
+    }
   ]
 }

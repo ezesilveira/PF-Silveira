@@ -8,7 +8,6 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { UsersRoutingModule } from './users-routing.module';
-/* import { UsersService } from './users.service'; */
 
 @NgModule({
   declarations: [
@@ -26,9 +25,6 @@ import { UsersRoutingModule } from './users-routing.module';
   ],
   exports: [
     UsersComponent
-  ],
-  /*  providers: [
-    UsersService,
-  ] */
+  ]
 })
 export class UsersModule { }
