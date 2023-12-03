@@ -1,11 +1,9 @@
-export type UserRole = 'ADMIN' | 'EMPLOYEE';
-
-export interface User {
+export interface Student {
     id: number;
     name: string;
     lastName: string;
     email: string;
     token: string;
-    role: UserRole;
+    role: 'STUDENT';
     password: string;
 }

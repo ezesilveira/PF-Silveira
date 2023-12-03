@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EnrollmentActions } from './store/enrollment.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { EnrollmentsDialogComponent } from './components/enrollments-dialog/enrollments-dialog.component';
 
 @Component({
   selector: 'app-enrollments',
@@ -8,7 +10,12 @@ import { EnrollmentActions } from './store/enrollment.actions';
   styleUrls: ['./enrollments.component.scss']
 })
 export class EnrollmentsComponent {
-  constructor(private store: Store) {
+  constructor(private store: Store,
+              private dialog: MatDialog) {
     this.store.dispatch(EnrollmentActions.loadEnrollments());
+  }
+
+  addEnrollment(): void {
+    this.dialog.open(EnrollmentsDialogComponent)
   }
 }

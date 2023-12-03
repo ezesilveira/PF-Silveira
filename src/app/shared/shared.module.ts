@@ -11,6 +11,7 @@ import { FullnamePipe } from './pipes/fullname.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { FormErrorsPipe } from './pipes/form-errors.pipe';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     FullnamePipe,
     MatTableModule,
     FormErrorsPipe,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSelectModule
 
   ]
 })

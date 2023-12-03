@@ -14,3 +14,18 @@ export const selectEnrollmentsIsLoading = createSelector(
   selectEnrollmentState,
   (state) => state.isLoading
 );
+
+export const selectCourseOptions = createSelector(
+  selectEnrollmentState,
+  (state) => state.courseOptions
+);
+
+export const selectStudentOptions = createSelector(
+  selectEnrollmentState,
+  (state) => state.studentOptions
+);
+
+export const selectIsLoadingDialogOptions = createSelector(
+  selectEnrollmentState,
+  (state) => state.isLoadingDialogOptions
+);

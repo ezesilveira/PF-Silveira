@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
-import { Observable, EMPTY, of } from 'rxjs';
+import { Observable, EMPTY, of, forkJoin } from 'rxjs';
 import { EnrollmentActions } from './enrollment.actions';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
 import { Enrollment } from '../models';
+import { Course } from '../../courses/models';
+import { Student } from '../../students/models';
 
 
 @Injectable()
@@ -27,8 +29,39 @@ export class EnrollmentEffects {
     );
   });
 
+  loadEnrollmentDialogOptions$ = createEffect(() => 
+  this.actions$.pipe(
+    // Filtro las acciones del tipo EnrollmentActions.loadEnrollmentDialogOptions
+    ofType(EnrollmentActions.loadEnrollmentDialogOptions),
+    concatMap(() => this.getEnrollmentDialogOptions().pipe(
+      map((response) =>
+      //Si la peticion sale OK, disparo el loadEnrollmentDialogOptionsSuccess
+      EnrollmentActions.loadEnrollmentDialogOptionsSuccess(response)
+      ),
+      catchError((error) => 
+        of(EnrollmentActions.loadEnrollmentDialogOptionsFailure({ error: error }))
+      )
+    ))
+  ))
 
   constructor(private actions$: Actions, private httpClient: HttpClient) {}
+
+  getEnrollmentDialogOptions(): Observable<{
+    courses: Course[];
+    students: Student[];
+  }> {
+    return forkJoin([
+      this.httpClient.get<Course[]>(`${environment.baseUrl}/courses`),
+      this.httpClient.get<Student[]>(`${environment.baseUrl}/students?role=STUDENT`)
+    ]).pipe(
+      map((response) => {
+        return {
+          courses: response[0],
+          students: response[1]
+        }
+      })
+    )
+  }
 
   getEnrollments(): Observable<Enrollment[]> {
     return this.httpClient.get<Enrollment[]>
