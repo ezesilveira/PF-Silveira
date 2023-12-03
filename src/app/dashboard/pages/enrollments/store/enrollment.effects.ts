@@ -5,7 +5,7 @@ import { Observable, EMPTY, of, forkJoin } from 'rxjs';
 import { EnrollmentActions } from './enrollment.actions';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
-import { Enrollment } from '../models';
+import { CreateEnrollmentPayload, Enrollment } from '../models';
 import { Course } from '../../courses/models';
 import { Student } from '../../students/models';
 
@@ -42,9 +42,26 @@ export class EnrollmentEffects {
         of(EnrollmentActions.loadEnrollmentDialogOptionsFailure({ error: error }))
       )
     ))
-  ))
+  ));
+
+  createEnrollment$ = createEffect(() => 
+    this.actions$.pipe(
+        ofType(EnrollmentActions.createEnrollment),
+        concatMap((action) => {
+          return this.createEnrollment(action.payload).pipe(
+            map((data) => EnrollmentActions.loadEnrollments()),
+            catchError((error) => of(EnrollmentActions.createEnrollmentFailure(error)))
+          )
+        })
+    )
+  );
+  
 
   constructor(private actions$: Actions, private httpClient: HttpClient) {}
+
+  createEnrollment(payload:CreateEnrollmentPayload): Observable<Enrollment> {
+    return this.httpClient.post<Enrollment>(`${environment.baseUrl}/enrollments`, payload)
+  }
 
   getEnrollmentDialogOptions(): Observable<{
     courses: Course[];

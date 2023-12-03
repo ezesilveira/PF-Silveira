@@ -9,8 +9,8 @@
             <div class="col-6">
                 <mat-form-field class="w-100">
                     <mat-label>Curso</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let course of courseOptions$ | async">
+                    <mat-select [formControl]="courseIdControl">
+                        <mat-option [value]="course.id" *ngFor="let course of courseOptions$ | async">
                         {{ course.name }}
                         </mat-option>
                     </mat-select>
@@ -19,8 +19,8 @@
             <div class="col-6">
                 <mat-form-field class="w-100">
                     <mat-label>Alumno</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let student of studentOptions$ | async">
+                    <mat-select [formControl]="studentIdControl">
+                        <mat-option [value]="student.id" *ngFor="let student of studentOptions$ | async">
                         {{ student.name }} {{ student.lastName }}
                         </mat-option>
                     </mat-select>
@@ -30,6 +30,6 @@
     </ng-template>
 </div>
 <div mat-dialog-actions class="d-flex ">
-    <button mat-button type="button" mat-raised-button color="primary">Cancelar</button>
-    <button mat-button type="button" mat-raised-button color="primary">Guardar</button>
+    <button mat-dialog-close="" mat-button type="button" mat-raised-button color="primary">Cancelar</button>
+    <button (click)="onSubmit()" mat-button type="button" mat-raised-button color="primary">Guardar</button>
 </div>
