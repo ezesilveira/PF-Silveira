@@ -7,3 +7,12 @@ export interface Student {
     role: 'STUDENT';
     password: string;
 }
+
+export interface createStudent {
+    name: string | null;
+    lastName: string | null;
+    email: string | null;
+    token: string | null;
+    role: string | null;
+    password: string | null;
+}

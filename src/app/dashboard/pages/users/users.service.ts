@@ -18,6 +18,7 @@ export class UsersService {
     }
     
     createUser(payload: User): Observable<User[]> {
+      console.log(payload);
       return this.httpClient
       .post<User>(`${environment.baseUrl}/users`, payload)
       .pipe(concatMap(() => this.getUsers())

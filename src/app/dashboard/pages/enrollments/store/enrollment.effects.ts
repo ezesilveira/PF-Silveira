@@ -60,6 +60,7 @@ export class EnrollmentEffects {
   constructor(private actions$: Actions, private httpClient: HttpClient) {}
 
   createEnrollment(payload:CreateEnrollmentPayload): Observable<Enrollment> {
+    console.log(payload);
     return this.httpClient.post<Enrollment>(`${environment.baseUrl}/enrollments`, payload)
   }
 

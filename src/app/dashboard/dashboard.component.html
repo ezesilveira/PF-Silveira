@@ -16,7 +16,9 @@
             <mat-list-item routerLink="users" 
             routerLinkActive #usuariosLink="routerLinkActive"
             [activated]="usuariosLink.isActive"
-            (click)="drawer.toggle()">
+            (click)="drawer.toggle()"
+            *ngIf="(userRole$ |async) === 'ADMIN'"
+            >
                 <a>Usuarios</a>
             </mat-list-item>
             <mat-list-item routerLink="courses"
@@ -25,7 +27,7 @@
             (click)="drawer.toggle()">
                 <a>Cursos</a>
             </mat-list-item>
-            <mat-list-item routerLink=""
+            <mat-list-item routerLink="students"
             routerLinkActive #alumnosLink="routerLinkActive"
             [activated]="alumnosLink.isActive"
             (click)="drawer.toggle()">

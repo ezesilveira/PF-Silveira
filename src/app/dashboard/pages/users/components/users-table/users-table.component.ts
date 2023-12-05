@@ -30,7 +30,7 @@ export class UsersTableComponent implements OnInit {
 
   constructor(private router: Router,
               private store: Store
-    ){ 
+    ){
       this.userRole$ = this.store.select(selectAuthUser)
         .pipe(map((u) => u?.role))
     }
