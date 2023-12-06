@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, map, concatMap, mergeMap } from 'rxjs/operators';
 import { Observable, EMPTY, of } from 'rxjs';
 import { StudentActions } from './student.actions';
 import { HttpClient } from '@angular/common/http';
@@ -31,6 +31,20 @@ export class StudentEffects {
         this.getStudentToEdit(action.studentId).pipe(
           map(data => StudentActions.loadStudentToEditSuccess({ data })),
           catchError(error => of(StudentActions.loadStudentToEditFailure({ error }))))
+      )
+    );
+  });
+
+  updateStudentToEdit$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(StudentActions.updateStudentToEdit),
+      concatMap((action) =>
+        this.updateStudentToEdit(action.studentId, action.payload).pipe(
+          mergeMap(() => [
+            StudentActions.clearStudentToEdit(),
+            StudentActions.loadStudents()
+          ]),
+          catchError(error => of(StudentActions.updateStudentToEditFailure({ error }))))
       )
     );
   });
@@ -67,9 +81,14 @@ export class StudentEffects {
     return this.httpClient.get<Student[]>(`${environment.baseUrl}/students`)
   }
 
-  getStudentToEdit(studentId: number): Observable<createStudent> {
+  getStudentToEdit(studentId: number): Observable<Student> {
     console.log(studentId);
-    return this.httpClient.get<createStudent>(`${environment.baseUrl}/students/${studentId}`)
+    return this.httpClient.get<Student>(`${environment.baseUrl}/students/${studentId}`)
+  }
+
+  updateStudentToEdit(studentId: number, payload: Student): Observable<Student> {
+    console.log(studentId);
+    return this.httpClient.put<Student>(`${environment.baseUrl}/students/${studentId}`, payload)
   }
 
   createStudent(payload: createStudent): Observable<createStudent> {

@@ -19,5 +19,6 @@ export const EnrollmentActions = createActionGroup({
     'Create Enrollment': props<{ payload: CreateEnrollmentPayload }>(),
     //'Create Enrollment Success': props<{ payload: CreateEnrollmentPayload }>(),
     'Create Enrollment Failure': props<{ error: unknown }>(),
+    'Clear Student To Edit': emptyProps(),
   }
 });

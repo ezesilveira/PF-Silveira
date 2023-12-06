@@ -8,7 +8,7 @@ export interface State {
   isLoading: boolean;
   isLoadingStudentToEdit: boolean;
   students: Student[];
-  studentToEdit: createStudent | null;
+  studentToEdit: Student | null;
   error: unknown;
 }
 
@@ -35,6 +35,9 @@ export const reducer = createReducer(
     ...state, isLoadingStudentToEdit: false, studentToEdit: data })),
   on(StudentActions.loadStudentToEditFailure, (state, { error }) => ({ 
     ...state, isLoadingStudentToEdit: false, error})),
+  on(StudentActions.clearStudentToEdit, (state) => {
+      return { ...state, studentToEdit: null };
+    }),
   );
 
 export const studentFeature = createFeature({
