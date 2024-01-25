@@ -1,0 +1,11 @@
+<button  mat-flat-button color="primary"> <!-- (click)="addUser()" -->
+    Crear Factura
+    <mat-icon>add</mat-icon>
+</button>
+
+<app-invoices-table 
+[dataSource]="(invoices$ | async) || []"
+></app-invoices-table>
+
+<!-- (editUser)="OnEditUser($event)"
+(deleteUser)="onDeleteUser($event)" -->

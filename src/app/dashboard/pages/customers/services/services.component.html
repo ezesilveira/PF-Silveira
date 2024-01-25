@@ -1,0 +1,12 @@
+<button  mat-flat-button color="primary">
+    Crear Servicio de Cliente
+    <mat-icon>add</mat-icon>
+</button>
+
+<app-quality-table 
+
+></app-quality-table>
+[dataSource]="(users$ | async) || []"
+(editUser)="OnEditUser($event)"
+(deleteUser)="onDeleteUser($event)"
+(click)="addUser()"

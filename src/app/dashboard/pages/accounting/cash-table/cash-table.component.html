@@ -1,0 +1,58 @@
+<br>
+<br>
+<mat-progress-bar mode="indeterminate" *ngIf="loading" color="accent"></mat-progress-bar>
+
+<table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cod_operacion">
+        <th mat-header-cell *matHeaderCellDef> Cod Ope </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.cod_operacion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.fecha | date }} </td>
+    </ng-container>
+    <ng-container matColumnDef="operadora">
+        <th mat-header-cell *matHeaderCellDef> operadora </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.operadora}} </td>
+    </ng-container>
+    <ng-container matColumnDef="operacion">
+        <th mat-header-cell *matHeaderCellDef> operacion </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.operacion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="importe">
+        <th mat-header-cell *matHeaderCellDef> importe </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.importe}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> cliente </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.cliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tipo_pago">
+        <th mat-header-cell *matHeaderCellDef> tipo_pago </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.tipo_pago}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ciudad">
+        <th mat-header-cell *matHeaderCellDef> ciudad </th>
+        <td mat-cell *matCellDef="let cashMove"> {{cashMove.ciudad}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let cashMove">
+            <button (click)="goToDetail(cashMove.id)" mat-icon-button color="accent">
+                <mat-icon>visibility</mat-icon>
+            </button>
+            <button (click)="editCashMove.emit(cashMove)" mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button [disabled]="(userRole$ |async) != 'ADMIN'" (click)="deleteCashMove.emit(cashMove.id)" mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

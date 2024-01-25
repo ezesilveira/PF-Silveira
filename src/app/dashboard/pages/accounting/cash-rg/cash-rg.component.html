@@ -1,0 +1,11 @@
+<button (click)="callAddCashMove()" mat-flat-button color="primary">
+    Crear Movimiento de Caja
+    <mat-icon>add</mat-icon>
+</button>
+
+<app-cash-table 
+[dataSource]="(cashMoves$ | async) || []"
+></app-cash-table>
+
+<!-- (editUser)="OnEditUser($event)"
+(deleteUser)="onDeleteUser($event)" -->

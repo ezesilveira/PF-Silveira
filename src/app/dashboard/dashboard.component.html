@@ -39,6 +39,12 @@
             (click)="drawer.toggle()">
                 <a>Inscripciones</a>
             </mat-list-item>
+            <mat-list-item routerLink="customers"
+            routerLinkActive #customersLink="routerLinkActive"
+            [activated]="customersLink.isActive"
+            (click)="drawer.toggle()">
+                <a>Clientes</a>
+            </mat-list-item>
             <br>
             <mat-divider></mat-divider>
             <br>
@@ -58,7 +64,51 @@
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
-            <span appFontSize [fontSize]="'20px'">Proyecto Final</span>
+            <span appFontSize [fontSize]="'20px'">ERP</span>
+            <span class="example-spacer"></span>
+            <button mat-button [matMenuTriggerFor]="menucli">Clientes</button>
+            <mat-menu #menucli="matMenu">
+                <button mat-menu-item>Empresas</button>
+                <button mat-menu-item>Residenciales</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menucont">Contabilidad</button>
+            <mat-menu #menucont="matMenu">
+                <button mat-menu-item>Caja Rio Grande</button>
+                <button mat-menu-item>Caja Tolhuin</button>
+                <button mat-menu-item>Caja Ushuaia</button>
+                <button mat-menu-item>Caja Diaria Rio Grande</button>
+                <button mat-menu-item>Caja Diaria Tolhuin</button>
+                <button mat-menu-item>Caja Diaria Ushuaia</button>
+                <button mat-menu-item>Cierre Caja Diaria Rio Grande</button>
+                <button mat-menu-item>Cierre Caja Diaria Tolhuin</button>
+                <button mat-menu-item>Cierre Caja Diaria Ushuaia</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menupro">Proyectos</button>
+            <mat-menu #menupro="matMenu">
+                <button mat-menu-item>Proyectos</button>
+                <button mat-menu-item>Tareas</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menuadm">RRHH</button>
+            <mat-menu #menuadm="matMenu">
+                <button mat-menu-item>Horas Extras</button>
+                <button mat-menu-item>Vacaciones</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menufac">Financiera</button>
+            <mat-menu #menufac="matMenu">
+                <button mat-menu-item routerLink="invoices"
+                routerLinkActive #financialLink="routerLinkActive"
+                >Facturas</button>
+                <button mat-menu-item>Remitos</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menupre">Comercial</button>
+            <mat-menu #menupre="matMenu">
+                <button mat-menu-item>Presupuestos</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menuusr">Usuarios</button>
+            <mat-menu #menuusr="matMenu">
+                <button mat-menu-item>Usuarios</button>
+                <button mat-menu-item>Administradores</button>
+            </mat-menu>
             <span class="example-spacer"></span>
             <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
                 <mat-icon>favorite</mat-icon>

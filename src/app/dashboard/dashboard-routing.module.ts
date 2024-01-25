@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { UsersComponent } from './pages/users/users.component';
-import { UserDetailComponent } from './pages/users/components/user-detail/user-detail.component';
-import { CoursesComponent } from './pages/courses/courses.component';
-import { CourseDetailComponent } from './pages/courses/components/course-detail/course-detail.component';
 import { DashboardComponent } from './dashboard.component';
 import { adminGuard } from '../core/guards/admin.guard';
 
@@ -35,16 +31,25 @@ import { adminGuard } from '../core/guards/admin.guard';
                     .then((m) => m.EnrollmentsModule)
                 },
                 {
-                    path: 'students',
-                    loadChildren: () => import('./pages/students/students.module')
-                        .then((m) => m.StudentsModule)
-                },
-                /* {
-                path: 'courses', component: CoursesComponent
+                path: 'students',
+                loadChildren: () => import('./pages/students/students.module')
+                    .then((m) => m.StudentsModule)
                 },
                 {
-                path: 'courses/:id', component: CourseDetailComponent
-                }, */
+                path: 'financial',
+                loadChildren: () => import('./pages/financial/financial.module')
+                    .then((m) => m.FinancialModule)
+                },
+                {
+                path: 'accounting',
+                loadChildren: () => import('./pages/accounting/accounting.module')
+                    .then((m) => m.AccountingModule)
+                },
+                {
+                path: 'customers',
+                loadChildren: () => import('./pages/customers/customers.module')
+                    .then((m) => m.CustomersModule)
+                },
                 {
                 path: '**', redirectTo: 'home',
                 },

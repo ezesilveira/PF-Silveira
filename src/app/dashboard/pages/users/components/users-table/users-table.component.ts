@@ -24,7 +24,7 @@ export class UsersTableComponent implements OnInit {
   @Output()
   editUser: EventEmitter<User> = new EventEmitter<User>();
 
-  displayedColumns: string[] = ['id', 'fullname','email', 'actions'];
+  displayedColumns: string[] = ['id', 'nombre', 'email', 'fecha_registro', 'activo', 'actions'];
 
   userRole$: Observable< UserRole | undefined>;
 

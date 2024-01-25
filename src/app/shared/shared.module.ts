@@ -12,7 +12,10 @@ import { MatTableModule } from '@angular/material/table';
 import { FormErrorsPipe } from './pipes/form-errors.pipe';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -35,8 +38,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     FormErrorsPipe,
     MatProgressBarModule,
     MatSelectModule,
-    MatDatepickerModule
-
+    MatDatepickerModule,
+    MatSidenavModule,
+    MatMenuModule,
   ]
 })
 export class SharedModule { }

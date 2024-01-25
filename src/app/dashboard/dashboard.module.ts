@@ -10,6 +10,7 @@ import { FontSizeDirective } from '../font-size.directive';
 import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     MatIconModule,
     RouterModule,
     MatListModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MatMenuModule
   ],
   exports: [DashboardComponent],
 })

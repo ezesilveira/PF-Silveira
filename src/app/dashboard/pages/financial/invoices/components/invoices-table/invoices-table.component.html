@@ -1,0 +1,46 @@
+<br>
+<br>
+<mat-progress-bar mode="indeterminate" *ngIf="loading" color="accent"></mat-progress-bar>
+
+<table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let invoice"> {{invoice.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cod_factura">
+        <th mat-header-cell *matHeaderCellDef> Cod factura </th>
+        <td mat-cell *matCellDef="let invoice"> {{invoice.cod_factura}} </td>
+    </ng-container>
+    <ng-container matColumnDef="num_factura">
+        <th mat-header-cell *matHeaderCellDef> Num factura </th>
+        <td mat-cell *matCellDef="let invoice"> {{invoice.num_factura}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fecha_factura">
+        <th mat-header-cell *matHeaderCellDef> Fecha de factura </th>
+        <td mat-cell *matCellDef="let invoice"> {{invoice.fecha_factura | date }} </td>
+    </ng-container>
+    <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let invoice"> {{invoice.cliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="importe">
+        <th mat-header-cell *matHeaderCellDef> Importe </th>
+        <td mat-cell *matCellDef="let invoice"> {{invoice.importe}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let invoice">
+            <button (click)="goToDetail(invoice.id)" mat-icon-button color="accent">
+                <mat-icon>visibility</mat-icon>
+            </button>
+            <button (click)="editUser.emit(invoice)" mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button [disabled]="(userRole$ |async) != 'ADMIN'" (click)="deleteUser.emit(invoice.id)" mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
