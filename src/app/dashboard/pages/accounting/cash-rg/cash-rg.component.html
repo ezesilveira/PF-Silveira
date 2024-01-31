@@ -1,7 +1,10 @@
-<button (click)="callAddCashMove()" mat-flat-button color="primary">
-    Crear Movimiento de Caja
-    <mat-icon>add</mat-icon>
-</button>
+<div class="d-flex justify-content-between">
+    <h2 matDialogTitle class="tw-bg-debug-orange-light">Movimiento Caja Rio Grande</h2>
+    <button  mat-flat-button color="primary">
+        Crear Movimiento de Caja
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
 
 <app-cash-table 
 [dataSource]="(cashMoves$ | async) || []"

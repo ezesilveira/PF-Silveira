@@ -11,3 +11,4 @@ export interface CashMove {
     comprobante: Blob;
     ciudad: string;
 }
+

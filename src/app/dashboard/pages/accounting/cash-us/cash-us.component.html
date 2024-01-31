@@ -1,10 +1,17 @@
-<!-- <button (click)="addUser()" mat-flat-button color="primary">
-    Crear Usuario
-    <mat-icon>add</mat-icon>
-</button>
+<div class="d-flex justify-content-between">
+    <h2 matDialogTitle class="tw-bg-debug-orange-light">Movimiento Caja Ushuaia</h2>
+    <button  mat-flat-button color="primary">
+        Crear Movimiento de Caja
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
 
 <app-cash-table 
+
+></app-cash-table>
+
 [dataSource]="(users$ | async) || []"
 (editUser)="OnEditUser($event)"
 (deleteUser)="onDeleteUser($event)"
-></app-cash-table> -->
+
+(click)="addUser()"
