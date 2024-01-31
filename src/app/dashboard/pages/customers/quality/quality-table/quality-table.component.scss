@@ -1,0 +1,11 @@
+table{
+    width: 100%;
+}
+
+.truncate-cell {
+    width: 150px; // Ajusta según sea necesario
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}

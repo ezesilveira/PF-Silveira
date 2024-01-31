@@ -1,11 +1,11 @@
-export type UserRole = 'ADMIN' | 'EMPLOYEE';
-
-export interface User {
+export interface BusinessCustomer{
     id: number;
-    name: string;
-    lastName: string;
-    email: string;
-    token: string;
-    role: UserRole;
-    password: string;
+    cod_cliente: number;
+    nombre_cliente: string;
+    ciudad: string;
+    direccion: string;
+    cuit: number;
+    tipo_contratacion: string;
+    servicio_nuevo: string | null;
+    contrato: string | null;
 }

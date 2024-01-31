@@ -1,1 +1,60 @@
-<p>quality-table works!</p>
+<br>
+<br>
+<mat-progress-bar mode="indeterminate" *ngIf="loading" color="accent"></mat-progress-bar>
+
+<table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="cod_cliente">
+        <th mat-header-cell *matHeaderCellDef> Cod </th>
+        <td mat-cell *matCellDef="let customers"> {{customers.cod_cliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> fecha </th>
+        <td mat-cell *matCellDef="let customers"> {{customers.fecha | date}} </td>
+    </ng-container>
+    <ng-container matColumnDef="servicio">
+        <th mat-header-cell *matHeaderCellDef> servicio </th>
+        <td mat-cell *matCellDef="let customers"> {{customers.servicio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="puntaje">
+        <th mat-header-cell *matHeaderCellDef> puntaje </th>
+        <td mat-cell *matCellDef="let customers"> {{customers.puntaje}} </td>
+    </ng-container>
+    <ng-container matColumnDef="comentario_cliente">
+        <th mat-header-cell *matHeaderCellDef> Comentario_cliente </th>
+        <td mat-cell *matCellDef="let customers" class="truncate-cell" 
+        matTooltip="{{ customers.comentario_cliente }}"> 
+        {{customers.comentario_cliente | truncate: 50}} </td>
+    </ng-container>
+    <ng-container matColumnDef="analisis_causa">
+        <th mat-header-cell *matHeaderCellDef> analisis_causa </th>
+        <td mat-cell *matCellDef="let customers" class="truncate-cell" 
+        matTooltip="{{ customers.analisis_causa }}">
+        {{ customers.analisis_causa | truncate: 50 }} </td>
+    </ng-container>
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> acciones </th>
+        <td mat-cell *matCellDef="let customers" class="truncate-cell" 
+        matTooltip="{{ customers.acciones }}"> {{customers.acciones | truncate: 50 }} </td>
+    </ng-container>
+    <ng-container matColumnDef="responsable_accion">
+        <th mat-header-cell *matHeaderCellDef> responsable_accion </th>
+        <td mat-cell *matCellDef="let customers" class="truncate-cell" 
+        matTooltip="{{ customers.responsable_accion }}"> {{customers.responsable_accion | truncate: 50}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let customers">
+            <button (click)="goToDetail(customers.id)" mat-icon-button color="accent">
+                <mat-icon>visibility</mat-icon>
+            </button>
+            <button (click)="editUser.emit(customers)" mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button [disabled]="(userRole$ |async) != 'ADMIN'" (click)="deleteUser.emit(customers.id)" mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

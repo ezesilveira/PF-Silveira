@@ -8,6 +8,8 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { UsersRoutingModule } from './users-routing.module';
+import { UserDeleteDialogComponent } from './components/user-delete-dialog/user-delete-dialog.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import { UsersRoutingModule } from './users-routing.module';
     UsersDialogComponent,
     UsersTableComponent,
     UserDetailComponent,
+    UserDeleteDialogComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     MatCardModule,
     MatButtonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    MatGridListModule
   ],
   exports: [
     UsersComponent

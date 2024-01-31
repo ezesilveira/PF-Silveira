@@ -15,12 +15,19 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { DeleteDialogConfirmComponent } from './common/delete-dialog-confirm/delete-dialog-confirm.component';
+import { LogoutDialogConfirmComponent } from './common/logout-dialog-confirm/logout-dialog-confirm.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+/* import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; */
 
 @NgModule({
   declarations: [
     FullnamePipe,
-    FormErrorsPipe
+    FormErrorsPipe,
+    TruncatePipe,
+    DeleteDialogConfirmComponent,
+    LogoutDialogConfirmComponent
   ],
   imports: [
     CommonModule
@@ -41,6 +48,9 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
     MatDatepickerModule,
     MatSidenavModule,
     MatMenuModule,
+    TruncatePipe,
+    MatPaginatorModule,
+/*     BrowserAnimationsModule  */
   ]
 })
 export class SharedModule { }

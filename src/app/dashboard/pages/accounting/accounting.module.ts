@@ -10,6 +10,7 @@ import { CashBalanceUsComponent } from './cash-balance-us/cash-balance-us.compon
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CashTableComponent } from './cash-table/cash-table.component';
 import { CashDialogComponent } from './cash-dialog/cash-dialog.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CashDialogComponent } from './cash-dialog/cash-dialog.component';
   imports: [
     CommonModule,
     AccountingRoutingModule,
-    SharedModule
+    SharedModule,
+    MatGridListModule
   ]
 })
 export class AccountingModule { }

@@ -21,24 +21,6 @@
             >
                 <a>Usuarios</a>
             </mat-list-item>
-            <mat-list-item routerLink="courses"
-            routerLinkActive #cursosLink="routerLinkActive"
-            [activated]="cursosLink.isActive"
-            (click)="drawer.toggle()">
-                <a>Cursos</a>
-            </mat-list-item>
-            <mat-list-item routerLink="students"
-            routerLinkActive #alumnosLink="routerLinkActive"
-            [activated]="alumnosLink.isActive"
-            (click)="drawer.toggle()">
-                <a>Alumnos</a>
-            </mat-list-item>
-            <mat-list-item routerLink="enrollments"
-            routerLinkActive #enrollmentsLink="routerLinkActive"
-            [activated]="enrollmentsLink.isActive"
-            (click)="drawer.toggle()">
-                <a>Inscripciones</a>
-            </mat-list-item>
             <mat-list-item routerLink="customers"
             routerLinkActive #customersLink="routerLinkActive"
             [activated]="customersLink.isActive"
@@ -66,58 +48,134 @@
             </button>
             <span appFontSize [fontSize]="'20px'">ERP</span>
             <span class="example-spacer"></span>
-            <button mat-button [matMenuTriggerFor]="menucli">Clientes</button>
+            <button mat-button [matMenuTriggerFor]="menucli">Clientes
+                <mat-icon>group</mat-icon>
+            </button>
             <mat-menu #menucli="matMenu">
-                <button mat-menu-item>Empresas</button>
-                <button mat-menu-item>Residenciales</button>
+                <button mat-menu-item routerLink="customers/business">Empresas
+                    <mat-icon>corporate_fare</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="customers/residential">Residenciales
+                    <mat-icon>group</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="customers/quality">Control de Calidad
+                    <mat-icon>high_quality</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="customers/services">Servicios de Clientes
+                    <mat-icon>electrical_services</mat-icon>
+                </button>
             </mat-menu>
-            <button mat-button [matMenuTriggerFor]="menucont">Contabilidad</button>
+            <button mat-button [matMenuTriggerFor]="menucont">Contabilidad
+                <mat-icon>account_balance</mat-icon>
+            </button>
             <mat-menu #menucont="matMenu">
-                <button mat-menu-item>Caja Rio Grande</button>
-                <button mat-menu-item>Caja Tolhuin</button>
-                <button mat-menu-item>Caja Ushuaia</button>
-                <button mat-menu-item>Caja Diaria Rio Grande</button>
-                <button mat-menu-item>Caja Diaria Tolhuin</button>
-                <button mat-menu-item>Caja Diaria Ushuaia</button>
-                <button mat-menu-item>Cierre Caja Diaria Rio Grande</button>
-                <button mat-menu-item>Cierre Caja Diaria Tolhuin</button>
-                <button mat-menu-item>Cierre Caja Diaria Ushuaia</button>
+                <button mat-menu-item routerLink="accounting/cash_rg">Caja Rio Grande
+                    <mat-icon>account_balance</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="accounting/cash_tl">Caja Tolhuin
+                    <mat-icon>account_balance</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="accounting/cash_us">Caja Ushuaia
+                    <mat-icon>account_balance</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="accounting/cash-balance_rg">Caja Diaria Rio Grande
+                    <mat-icon>edit_calendar</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="accounting/cash-balance_tl">Caja Diaria Tolhuin
+                    <mat-icon>edit_calendar</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="accounting/cash-balance_us">Caja Diaria Ushuaia
+                    <mat-icon>edit_calendar</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="accounting/cash_us">Cierre Caja Diaria Rio Grande
+                    <mat-icon>event_busy</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="accounting/cash_us">Cierre Caja Diaria Tolhuin
+                    <mat-icon>event_busy</mat-icon>
+                </button>
+                <button mat-menu-item routerLink="accounting/cash_us">Cierre Caja Diaria Ushuaia
+                    <mat-icon>event_busy</mat-icon>
+                </button>
             </mat-menu>
-            <button mat-button [matMenuTriggerFor]="menupro">Proyectos</button>
+            <button mat-button [matMenuTriggerFor]="menupro">Proyectos
+                <mat-icon>engineering</mat-icon>
+            </button>
             <mat-menu #menupro="matMenu">
-                <button mat-menu-item>Proyectos</button>
-                <button mat-menu-item>Tareas</button>
+                <button mat-menu-item>Proyectos
+                    <mat-icon>engineering</mat-icon>
+                </button>
+                <button mat-menu-item>Tareas
+                    <mat-icon>task</mat-icon>
+                </button>
             </mat-menu>
-            <button mat-button [matMenuTriggerFor]="menuadm">RRHH</button>
+            <button mat-button [matMenuTriggerFor]="menuadm">RRHH
+                <mat-icon>groups_2</mat-icon>
+            </button>
             <mat-menu #menuadm="matMenu">
-                <button mat-menu-item>Horas Extras</button>
-                <button mat-menu-item>Vacaciones</button>
+                <button mat-menu-item>Dotación
+                    <mat-icon>badge</mat-icon>
+                </button>
+                <button mat-menu-item>DashBoard Dotación
+                    <mat-icon>dashboard</mat-icon>
+                </button>
+                <button mat-menu-item>Asignación Dotación
+                    <mat-icon>assignment_ind</mat-icon>
+                </button>
+                <button mat-menu-item>Novedades Dotación
+                    <mat-icon>person_apron</mat-icon>
+                </button>
+                <button mat-menu-item>Horas Extras
+                    <mat-icon>watch_later</mat-icon>
+                </button>
+                <button mat-menu-item>Vacaciones
+                    <mat-icon>work_off</mat-icon>
+                </button>
             </mat-menu>
-            <button mat-button [matMenuTriggerFor]="menufac">Financiera</button>
+            <button mat-button [matMenuTriggerFor]="menufac">Financiera
+                <mat-icon>payments</mat-icon>
+            </button>
             <mat-menu #menufac="matMenu">
-                <button mat-menu-item routerLink="invoices"
-                routerLinkActive #financialLink="routerLinkActive"
-                >Facturas</button>
-                <button mat-menu-item>Remitos</button>
+                <button mat-menu-item routerLink="financial/invoices"
+                    routerLinkActive #financialLink="routerLinkActive" 
+                    >Facturas
+                    <mat-icon>receipt_long</mat-icon>
+                </button>
+                <button mat-menu-item>Remitos
+                    <mat-icon>receipt</mat-icon>
+                </button>
             </mat-menu>
-            <button mat-button [matMenuTriggerFor]="menupre">Comercial</button>
+            <button mat-button [matMenuTriggerFor]="menupre">Comercial
+                <mat-icon>local_mall</mat-icon>
+            </button>
             <mat-menu #menupre="matMenu">
-                <button mat-menu-item>Presupuestos</button>
+                <button mat-menu-item>Presupuestos
+                    <mat-icon>work</mat-icon>
+                </button>
+                <button mat-menu-item>Proveedores
+                    <mat-icon>trolley</mat-icon>
+                </button>
             </mat-menu>
-            <button mat-button [matMenuTriggerFor]="menuusr">Usuarios</button>
+            <button mat-button [matMenuTriggerFor]="menuusr">Usuarios
+                <mat-icon>account_circle</mat-icon>
+            </button>
             <mat-menu #menuusr="matMenu">
-                <button mat-menu-item>Usuarios</button>
-                <button mat-menu-item>Administradores</button>
+                <button mat-menu-item routerLink="users">Usuarios
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+                <button mat-menu-item>Administradores
+                    <mat-icon>admin_panel_settings</mat-icon>
+                </button>
             </mat-menu>
             <span class="example-spacer"></span>
             <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-                <mat-icon>favorite</mat-icon>
+                <mat-icon>search</mat-icon>
             </button>
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-                <mat-icon>share</mat-icon>
+                <mat-icon>settings</mat-icon>
             </button>
         </mat-toolbar>
-        <main style="padding: 1rem;">
+        <main class="container">
+            <br>
             <router-outlet></router-outlet>
         </main>
     </div>

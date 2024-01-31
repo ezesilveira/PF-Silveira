@@ -5,6 +5,7 @@ import { User } from './models';
 import { UsersService } from './users.service'; 
 import { NotifierService } from '../../../core/services/notifier.service';
 import { Observable } from 'rxjs';
+import { UserDeleteDialogComponent } from './components/user-delete-dialog/user-delete-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -49,8 +50,15 @@ users$: Observable<User[]>;
   }
 
   onDeleteUser(userId: number): void {
-    if (confirm('Esta seguro de borrar este usuario')) {
-      this.users$ = this.UsersService.deleteUser(userId);
-  }  
-}
+    const dialogRef = this.matDialog.open(UserDeleteDialogComponent);
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Lógica para borrar el usuario
+        this.users$ = this.UsersService.deleteUser(userId);
+        this.NotifierService.showSuccess('Exito', 'Se Borro el usuario')
+        console.log('Registro eliminado');
+      }
+    });
+  }
 }

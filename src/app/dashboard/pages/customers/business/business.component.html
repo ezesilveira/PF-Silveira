@@ -3,10 +3,10 @@
     <mat-icon>add</mat-icon>
 </button>
 
-<app-quality-table 
+<app-business-table
+    [dataSource]="(businessCustomer$ | async) || []"
+></app-business-table>
 
-></app-quality-table>
-[dataSource]="(users$ | async) || []"
-(editUser)="OnEditUser($event)"
+<!-- (editUser)="OnEditUser($event)"
 (deleteUser)="onDeleteUser($event)"
-(click)="addUser()"
+(click)="addUser()" -->

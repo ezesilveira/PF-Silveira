@@ -14,7 +14,7 @@ import { QualityComponent } from './quality/quality.component';
 import { QualityTableComponent } from './quality/quality-table/quality-table.component';
 import { QualityDialogComponent } from './quality/quality-dialog/quality-dialog.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CustomersComponent } from './customers/customers.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -29,13 +29,13 @@ import { CustomersComponent } from './customers/customers.component';
     ServicesTableComponent,
     QualityComponent,
     QualityTableComponent,
-    QualityDialogComponent,
-    CustomersComponent,
+    QualityDialogComponent
   ],
   imports: [
     CommonModule,
     CustomersRoutingModule,
-    SharedModule
+    SharedModule,
+    MatTooltipModule
   ]
 })
 export class CustomersModule { }

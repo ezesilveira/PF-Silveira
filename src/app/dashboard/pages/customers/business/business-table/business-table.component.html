@@ -1,1 +1,48 @@
-<p>business-table works!</p>
+<br>
+<br>
+<mat-progress-bar mode="indeterminate" *ngIf="loading" color="accent"></mat-progress-bar>
+
+<table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="cod_cliente">
+        <th mat-header-cell *matHeaderCellDef> cod_cliente </th>
+        <td mat-cell *matCellDef="let businessCustomer"> {{businessCustomer.cod_cliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombre_cliente">
+        <th mat-header-cell *matHeaderCellDef> nombre_cliente </th>
+        <td mat-cell *matCellDef="let businessCustomer"> {{businessCustomer.nombre_cliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ciudad">
+        <th mat-header-cell *matHeaderCellDef> ciudad </th>
+        <td mat-cell *matCellDef="let businessCustomer"> {{businessCustomer.ciudad}} </td>
+    </ng-container>
+    <ng-container matColumnDef="direccion">
+        <th mat-header-cell *matHeaderCellDef> direccion </th>
+        <td mat-cell *matCellDef="let businessCustomer"> {{businessCustomer.direccion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cuit">
+        <th mat-header-cell *matHeaderCellDef> cuit </th>
+        <td mat-cell *matCellDef="let businessCustomer"> {{businessCustomer.cuit}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let businessCustomer">
+            <button (click)="goToDetail(businessCustomer.id)" mat-icon-button color="accent">
+                <mat-icon>visibility</mat-icon>
+            </button>
+            <button (click)="editUser.emit(businessCustomer)" mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button [disabled]="(userRole$ |async) != 'ADMIN'" (click)="deleteUser.emit(businessCustomer.id)" mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page">
+</mat-paginator>

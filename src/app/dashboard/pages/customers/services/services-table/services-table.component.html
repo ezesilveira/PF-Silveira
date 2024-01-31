@@ -1,1 +1,52 @@
-<p>services-table works!</p>
+<br>
+<br>
+<mat-progress-bar mode="indeterminate" *ngIf="loading" color="accent"></mat-progress-bar>
+
+<table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="cod_cliente">
+        <th mat-header-cell *matHeaderCellDef> Cod </th>
+        <td mat-cell *matCellDef="let services"> {{services.cod_cliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombre_cliente">
+        <th mat-header-cell *matHeaderCellDef> nombre_cliente </th>
+        <td mat-cell *matCellDef="let services"> {{services.nombre_cliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cod_servicio">
+        <th mat-header-cell *matHeaderCellDef> cod_servicio </th>
+        <td mat-cell *matCellDef="let services"> {{services.cod_servicio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="servicio">
+        <th mat-header-cell *matHeaderCellDef> servicio </th>
+        <td mat-cell *matCellDef="let services"> {{services.servicio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ciudad">
+        <th mat-header-cell *matHeaderCellDef> ciudad </th>
+        <td mat-cell *matCellDef="let services">
+        {{ services.ciudad }} </td>
+    </ng-container>
+    <ng-container matColumnDef="tipo_servicio">
+        <th mat-header-cell *matHeaderCellDef> tipo_servicio </th>
+        <td mat-cell *matCellDef="let services">
+        {{ services.tipo_servicio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fecha_inicio">
+        <th mat-header-cell *matHeaderCellDef> fecha_inicio </th>
+        <td mat-cell *matCellDef="let services"> {{services.fecha_inicio | date }} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let services">
+            <button (click)="goToDetail(services.id)" mat-icon-button color="accent">
+                <mat-icon>visibility</mat-icon>
+            </button>
+            <button (click)="editUser.emit(services)" mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button [disabled]="(userRole$ |async) != 'ADMIN'" (click)="deleteUser.emit(services.id)" mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

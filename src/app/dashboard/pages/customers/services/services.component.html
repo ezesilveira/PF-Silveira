@@ -3,10 +3,10 @@
     <mat-icon>add</mat-icon>
 </button>
 
-<app-quality-table 
+<app-services-table
+    [dataSource]="(customersService$ | async) || []"
+></app-services-table>
 
-></app-quality-table>
-[dataSource]="(users$ | async) || []"
 (editUser)="OnEditUser($event)"
 (deleteUser)="onDeleteUser($event)"
 (click)="addUser()"
